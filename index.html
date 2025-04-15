@@ -7,13 +7,13 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
+      background-color: #fffefc;
       margin: 0;
       padding: 0;
       color: #333;
     }
     header {
-      padding: 20px;
+      padding: 20px 10px;
       text-align: center;
       background-color: #ffffff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -23,7 +23,7 @@
     }
     h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 22px;
     }
     input[type="text"] {
       width: 90%;
@@ -36,35 +36,59 @@
     }
     .container {
       max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 20px auto;
+      padding: 0 15px;
     }
     .card {
       background-color: #ffffff;
-      border-radius: 8px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 15px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .card img {
       max-width: 100%;
-      border-radius: 6px;
-      margin-bottom: 10px;
+      max-height: 250px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 12px;
     }
     .card:hover {
       transform: scale(1.01);
     }
-    .card a {
-      text-decoration: none;
-      color: #0077cc;
-      font-weight: bold;
+    .card p {
+      margin: 10px 0;
+      text-align: center;
     }
-    .card a:hover {
-      text-decoration: underline;
+    .card a.btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #ff5722;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+    .share-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .share-buttons button {
+      background-color: #eee;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .share-buttons button:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
@@ -77,27 +101,38 @@
   <div class="container" id="cardContainer">
     <div class="card" data-title="skintific ผิวเป็นสิว">
       <img src="skintific-acne.jpg" alt="Skintific สำหรับผิวเป็นสิว" />
-      <p>Skintific สูตรสำหรับผิวเป็นสิว<br>
-        <a href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">ช้อปเลย</a>
-      </p>
+      <p>Skintific สูตรสำหรับผิวเป็นสิว</p>
+      <a class="btn" href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">ช้อปเลย</a>
+      <div class="share-buttons">
+        <button onclick="share('https://s.shopee.co.th/1qOj1KWaw8')">แชร์</button>
+      </div>
     </div>
+
     <div class="card" data-title="skintific ผิวแข็งแรง">
       <img src="skintific-barrier.jpg" alt="Skintific สูตรผิวแข็งแรง ชุ่มชื่น" />
-      <p>Skintific สูตรผิวแข็งแรง ชุ่มชื่น<br>
-        <a href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">ช้อปเลย</a>
-      </p>
+      <p>Skintific สูตรผิวแข็งแรง ชุ่มชื่น</p>
+      <a class="btn" href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">ช้อปเลย</a>
+      <div class="share-buttons">
+        <button onclick="share('https://s.shopee.co.th/9UoA9WvdBY')">แชร์</button>
+      </div>
     </div>
+
     <div class="card" data-title="skintific มาร์กโคลน">
       <img src="skintific-claymask.jpg" alt="Skintific มาร์กโคลน" />
-      <p>Skintific มาร์กโคลน<br>
-        <a href="https://s.shopee.co.th/706pAzmU2y" target="_blank">ช้อปเลย</a>
-      </p>
+      <p>Skintific มาร์กโคลน</p>
+      <a class="btn" href="https://s.shopee.co.th/706pAzmU2y" target="_blank">ช้อปเลย</a>
+      <div class="share-buttons">
+        <button onclick="share('https://s.shopee.co.th/706pAzmU2y')">แชร์</button>
+      </div>
     </div>
-     <div class="card" data-title="Cat Home บ้านแมว ที่ฝนเล็บ">
+
+    <div class="card" data-title="Cat Home บ้านแมว ที่ฝนเล็บ">
       <img src="cat-home.JPG" alt="Cat Home บ้านแมว ที่ฝนเล็บ" />
-      <p>Cat Home บ้านแมว ที่ฝนเล็บ 2 IN 1<br>
-        <a href="https://s.shopee.co.th/9f7aOBpEHR" target="_blank">ช้อปเลย</a>
-      </p>
+      <p>Cat Home บ้านแมว ที่ฝนเล็บ 2 IN 1</p>
+      <a class="btn" href="https://s.shopee.co.th/9f7aOBpEHR" target="_blank">ช้อปเลย</a>
+      <div class="share-buttons">
+        <button onclick="share('https://s.shopee.co.th/9f7aOBpEHR')">แชร์</button>
+      </div>
     </div>
   </div>
 
@@ -110,6 +145,18 @@
         card.style.display = title.includes(filter) ? '' : 'none';
       });
     });
+
+    function share(url) {
+      if (navigator.share) {
+        navigator.share({
+          title: 'ดูสินค้านี้เลย!',
+          url: url
+        });
+      } else {
+        const shareText = `ดูสินค้านี้เลย! ${url}`;
+        prompt("คัดลอกลิงก์เพื่อแชร์:", shareText);
+      }
+    }
   </script>
 </body>
 </html>
