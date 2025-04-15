@@ -25,7 +25,8 @@
       margin: 0;
       font-size: 22px;
     }
-    input[type="text"] {
+    input[type="text"],
+    select {
       width: 90%;
       max-width: 500px;
       padding: 10px;
@@ -63,32 +64,33 @@
       margin: 10px 0;
       text-align: center;
     }
-    .card a.btn {
-      display: inline-block;
-      padding: 10px 16px;
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 8px;
+      gap: 10px;
+    }
+    .btn-group button,
+    .btn-group a.btn {
+      flex: 1;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-group button {
+      background-color: #eee;
+    }
+    .btn-group button:hover {
+      background-color: #ddd;
+    }
+    .btn-group a.btn {
       background-color: #00bcd4;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
-      margin-top: 8px;
-    }
-    .share-buttons {
-      margin-top: 10px;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .share-buttons button {
-      background-color: #eee;
-      border: none;
-      border-radius: 6px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .share-buttons button:hover {
-      background-color: #ddd;
     }
   </style>
 </head>
@@ -96,63 +98,82 @@
   <header>
     <h1>แนะนำ สินค้า โดยพิมพ์</h1>
     <input type="text" id="searchInput" placeholder="ค้นหาสินค้าที่คุณสนใจ...">
+    <select id="categoryFilter">
+      <option value="">ทุกหมวดหมู่</option>
+      <option value="skintific">Skintific</option>
+      <option value="แมว">แมว</option>
+      <option value="รองเท้า">รองเท้า</option>
+    </select>
   </header>
 
   <div class="container" id="cardContainer">
-    <div class="card" data-title="skintific ผิวเป็นสิว">
+    <div class="card" data-title="skintific ผิวเป็นสิว" data-category="skintific">
       <img src="skintific-acne.jpg" alt="Skintific สำหรับผิวเป็นสิว" />
       <p>Skintific สูตรสำหรับผิวเป็นสิว</p>
-      <a class="btn" href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">ช้อปเลย</a>
-      <div class="share-buttons">
+      <div class="btn-group">
         <button onclick="share('https://s.shopee.co.th/1qOj1KWaw8')">แชร์</button>
+        <a class="btn" href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">ช้อปเลย</a>
       </div>
     </div>
 
-    <div class="card" data-title="skintific ผิวแข็งแรง">
+    <div class="card" data-title="skintific ผิวแข็งแรง" data-category="skintific">
       <img src="skintific-barrier.jpg" alt="Skintific สูตรผิวแข็งแรง ชุ่มชื่น" />
       <p>Skintific สูตรผิวแข็งแรง ชุ่มชื่น</p>
-      <a class="btn" href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">ช้อปเลย</a>
-      <div class="share-buttons">
+      <div class="btn-group">
         <button onclick="share('https://s.shopee.co.th/9UoA9WvdBY')">แชร์</button>
+        <a class="btn" href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">ช้อปเลย</a>
       </div>
     </div>
 
-    <div class="card" data-title="skintific มาร์กโคลน">
+    <div class="card" data-title="skintific มาร์กโคลน" data-category="skintific">
       <img src="skintific-claymask.jpg" alt="Skintific มาร์กโคลน" />
       <p>Skintific มาร์กโคลน</p>
-      <a class="btn" href="https://s.shopee.co.th/706pAzmU2y" target="_blank">ช้อปเลย</a>
-      <div class="share-buttons">
+      <div class="btn-group">
         <button onclick="share('https://s.shopee.co.th/706pAzmU2y')">แชร์</button>
+        <a class="btn" href="https://s.shopee.co.th/706pAzmU2y" target="_blank">ช้อปเลย</a>
       </div>
     </div>
 
-    <div class="card" data-title="Cat Home บ้านแมว ที่ฝนเล็บ">
+    <div class="card" data-title="Cat Home บ้านแมว ที่ฝนเล็บ" data-category="แมว">
       <img src="cat-home.JPG" alt="Cat Home บ้านแมว ที่ฝนเล็บ" />
       <p>Cat Home บ้านแมว ที่ฝนเล็บ 2 IN 1</p>
-      <a class="btn" href="https://s.shopee.co.th/9f7aOBpEHR" target="_blank">ช้อปเลย</a>
-      <div class="share-buttons">
+      <div class="btn-group">
         <button onclick="share('https://s.shopee.co.th/9f7aOBpEHR')">แชร์</button>
+        <a class="btn" href="https://s.shopee.co.th/9f7aOBpEHR" target="_blank">ช้อปเลย</a>
       </div>
     </div>
-    <div class="card" data-title="Hello Polo รองเท้าแตะยางนิ่ม">
-  <img src="hello-polo-shoes.JPG" alt="Hello Polo รองเท้าแตะยางนิ่ม" />
-  <p>Hello Polo รองเท้าแตะยางนิ่ม</p>
-  <a class="btn" href="https://s.shopee.co.th/2VePsm3LgY" target="_blank">ช้อปเลย</a>
-  <div class="share-buttons">
+
+    <div class="card" data-title="Hello Polo รองเท้าแตะยางนิ่ม" data-category="รองเท้า">
+      <img src="hello-polo-shoes.JPG" alt="Hello Polo รองเท้าแตะยางนิ่ม" />
+      <p>Hello Polo รองเท้าแตะยางนิ่ม</p>
+      <div class="btn-group">
         <button onclick="share('https://s.shopee.co.th/2VePsm3LgY')">แชร์</button>
+        <a class="btn" href="https://s.shopee.co.th/2VePsm3LgY" target="_blank">ช้อปเลย</a>
       </div>
-</div>
+    </div>
   </div>
 
   <script>
-    document.getElementById('searchInput').addEventListener('input', function () {
-      const filter = this.value.toLowerCase();
-      const cards = document.querySelectorAll('.card');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const cards = document.querySelectorAll('.card');
+
+    function filterCards() {
+      const searchText = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value.toLowerCase();
+
       cards.forEach(card => {
         const title = card.getAttribute('data-title').toLowerCase();
-        card.style.display = title.includes(filter) ? '' : 'none';
+        const category = card.getAttribute('data-category').toLowerCase();
+        const matchSearch = title.includes(searchText);
+        const matchCategory = selectedCategory === "" || category.includes(selectedCategory);
+
+        card.style.display = matchSearch && matchCategory ? '' : 'none';
       });
-    });
+    }
+
+    searchInput.addEventListener('input', filterCards);
+    categoryFilter.addEventListener('change', filterCards);
 
     function share(url) {
       if (navigator.share) {
