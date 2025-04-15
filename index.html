@@ -1,40 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ลิงก์แนะนำโดยพิมพ์</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>แนะนำ Skintific โดยพิมพ์</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; margin: 0; padding: 0; color: #333; }
-    header { padding: 20px; text-align: center; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10; }
-    h1 { margin: 0; font-size: 24px; }
-    input[type="text"] { width: 90%; max-width: 500px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; margin-top: 10px; }
-    .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-    .card { background-color: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s ease; }
-    .card:hover { transform: scale(1.01); }
-    .card a { text-decoration: none; color: #0077cc; font-weight: bold; }
-    .card a:hover { text-decoration: underline; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    input[type="text"] {
+      width: 90%;
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .card:hover {
+      transform: scale(1.01);
+    }
+    .card a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>ลิงก์แนะนำโดยพิมพ์</h1>
+    <h1>แนะนำ Skintific โดยพิมพ์</h1>
     <input type="text" id="searchInput" placeholder="ค้นหาสินค้าที่คุณสนใจ...">
   </header>
+
   <div class="container" id="cardContainer">
-    <div class="card" data-title="หูฟังบลูทูธ">
-      <p>หูฟังบลูทูธ: <a href="https://shopee.co.th/affiliate-link1" target="_blank">ไปดูสินค้า</a></p>
+    <div class="card" data-title="skintific ผิวเป็นสิว">
+      <img src="img/skintific-acne.jpg" alt="Skintific สำหรับผิวเป็นสิว" />
+      <p>Skintific สูตรสำหรับผิวเป็นสิว<br>
+        <a href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">ดูสินค้า</a>
+      </p>
     </div>
-    <div class="card" data-title="ไม้เซลฟี่">
-      <p>ไม้เซลฟี่: <a href="https://shopee.co.th/affiliate-link2" target="_blank">ไปดูสินค้า</a></p>
+    <div class="card" data-title="skintific ผิวแข็งแรง">
+      <img src="img/skintific-barrier.jpg" alt="Skintific สูตรผิวแข็งแรง ชุ่มชื่น" />
+      <p>Skintific สูตรผิวแข็งแรง ชุ่มชื่น<br>
+        <a href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">ดูสินค้า</a>
+      </p>
     </div>
-    <div class="card" data-title="เคสโทรศัพท์">
-      <p>เคสโทรศัพท์: <a href="https://shopee.co.th/affiliate-link3" target="_blank">ไปดูสินค้า</a></p>
+    <div class="card" data-title="skintific มาร์กโคลน">
+      <img src="img/skintific-claymask.jpg" alt="Skintific มาร์กโคลน" />
+      <p>Skintific มาร์กโคลน<br>
+        <a href="https://s.shopee.co.th/706pAzmU2y" target="_blank">ดูสินค้า</a>
+      </p>
     </div>
   </div>
+
   <script>
-    document.getElementById('searchInput').addEventListener('input', function() {
+    document.getElementById('searchInput').addEventListener('input', function () {
       const filter = this.value.toLowerCase();
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
