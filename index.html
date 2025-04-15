@@ -35,18 +35,6 @@
       font-size: 16px;
       margin-top: 10px;
     }
-    .filter-menu {
-      margin-top: 10px;
-    }
-    .filter-menu button {
-      padding: 6px 14px;
-      margin: 5px;
-      border: none;
-      background-color: #00bcd4;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -59,187 +47,216 @@
       margin-bottom: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
       transition: transform 0.2s ease;
-      position: relative;
     }
     .card:hover {
       transform: scale(1.01);
     }
     .card img {
-      max-width: 100%;
-      max-height: 150px;
+      width: 150px;
+      height: auto;
       border-radius: 8px;
       object-fit: cover;
-      margin-bottom: 12px;
     }
-    .card p {
-      margin: 10px 0;
-      text-align: center;
-    }
-    .action-buttons {
+    .card-content {
+      flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      margin-top: 10px;
     }
-    .action-buttons button,
-    .action-buttons a.btn {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .favorite-btn {
-      background-color: #ffe3e3;
-      color: #d32f2f;
-    }
-    .favorite-btn.active {
-      background-color: #ff5252;
-      color: white;
+    .card-content p {
+      margin: 0 0 10px;
+      font-size: 16px;
     }
     .btn {
       background-color: #00bcd4;
       color: white;
       text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: fit-content;
+      margin-bottom: 10px;
     }
     .btn i.material-icons {
       font-size: 18px;
     }
+    .bottom-row {
+      display: flex;
+      gap: 10px;
+    }
+    .favorite-btn {
+      background-color: #ffe3e3;
+      color: #d32f2f;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .favorite-btn.active {
+      background-color: #ff5252;
+      color: white;
+    }
     .share-btn {
       background-color: #eee;
       color: #444;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
     }
     .share-btn:hover {
       background-color: #ddd;
     }
     @media (max-width: 600px) {
-      .action-buttons {
-        flex-direction: row;
-        justify-content: space-between;
+      .card {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card img {
+        width: 100%;
+      }
+      .card-content {
+        align-items: center;
+      }
+      .card-content p, .btn {
+        text-align: center;
+      }
+      .bottom-row {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
   <header>
-         <img src="logo2.gif" alt="Logo" style="width:100%" />
-   <!-- <h1>แนะนำ สินค้า โดยพิมพ์</h1> -->
+    <img src="logo2.gif" alt="Logo" style="width:100%" />
     <input type="text" id="searchInput" placeholder="ค้นหาสินค้าที่คุณสนใจ...">
-  <!--<div class="filter-menu">
-      <button onclick="toggleFavorites()">ดูเฉพาะรายการโปรด</button>
-    </div>-->
   </header>
 
   <div class="container" id="cardContainer">
-    <!-- Add more cards here -->
-  <div class="card" data-id="skintific-acne" data-title="skintific ผิวเป็นสิว">
-  <img src="skintific-acne.jpg" alt="Skintific สำหรับผิวเป็นสิว" />
-  <p>Skintific สูตรสำหรับผิวเป็นสิว</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'skintific-acne')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/1qOj1KWaw8')">แชร์</button>
-  </div>
-</div>
+    
+    <!-- Card Template -->
+    <div class="card" data-id="skintific-acne" data-title="skintific ผิวเป็นสิว">
+      <img src="skintific-acne.jpg" alt="Skintific สำหรับผิวเป็นสิว" />
+      <div class="card-content">
+        <p>Skintific สูตรสำหรับผิวเป็นสิว</p>
+        <a class="btn" href="https://s.shopee.co.th/1qOj1KWaw8" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'skintific-acne')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/1qOj1KWaw8')">แชร์</button>
+        </div>
+      </div>
+    </div>
 
-<div class="card" data-id="skintific-barrier" data-title="skintific ผิวแข็งแรง">
-  <img src="skintific-barrier.jpg" alt="Skintific สูตรผิวแข็งแรง ชุ่มชื่น" />
-  <p>Skintific สูตรผิวแข็งแรง ชุ่มชื่น</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'skintific-barrier')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/9UoA9WvdBY')">แชร์</button>
-  </div>
-</div>
+    <div class="card" data-id="skintific-barrier" data-title="skintific ผิวแข็งแรง">
+      <img src="skintific-barrier.jpg" alt="Skintific สูตรผิวแข็งแรง ชุ่มชื่น" />
+      <div class="card-content">
+        <p>Skintific สูตรผิวแข็งแรง ชุ่มชื่น</p>
+        <a class="btn" href="https://s.shopee.co.th/9UoA9WvdBY" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'skintific-barrier')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/9UoA9WvdBY')">แชร์</button>
+        </div>
+      </div>
+    </div>
 
-<div class="card" data-id="skintific-claymask" data-title="skintific มาร์กโคลน">
-  <img src="skintific-claymask.jpg" alt="Skintific มาร์กโคลน" />
-  <p>Skintific มาร์กโคลน</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'skintific-claymask')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/706pAzmU2y" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/706pAzmU2y')">แชร์</button>
-  </div>
-</div>
+    <div class="card" data-id="skintific-claymask" data-title="skintific มาร์กโคลน">
+      <img src="skintific-claymask.jpg" alt="Skintific มาร์กโคลน" />
+      <div class="card-content">
+        <p>Skintific มาร์กโคลน</p>
+        <a class="btn" href="https://s.shopee.co.th/706pAzmU2y" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'skintific-claymask')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/706pAzmU2y')">แชร์</button>
+        </div>
+      </div>
+    </div>
 
+    <div class="card" data-id="camp-grill" data-title="Grill Pot เตาย่างมินิมอล พกพาง่าย">
+      <img src="grill-pot.JPG" alt="Grill Pot เตาย่างมินิมอล พกพาสะดวก" />
+      <div class="card-content">
+        <p>Grill Pot เตาย่างมินิมอล พกพาง่าย</p>
+        <a class="btn" href="https://s.shopee.co.th/3LDWySdW42" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'camp-grill')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/3LDWySdW42')">แชร์</button>
+        </div>
+      </div>
+    </div>
 
-<div class="card" data-id="camp-grill" data-title="Grill Pot เตาย่างมินิมอล พกพาง่าย">
-  <img src="grill-pot.JPG" alt="Grill Pot เตาย่างมินิมอล พกพาสะดวก" />
-  <p>Grill Pot เตาย่างมินิมอล พกพาง่าย</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'camp-grill')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/3LDWySdW42" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/3LDWySdW42')">แชร์</button>
-  </div>
-</div>
+    <div class="card" data-id="camp-chair" data-title="เก้าอี้แคมป์ ปรับระดับ พับเก็บง่าย">
+      <img src="camp-chair.JPG" alt="เก้าอี้แคมป์ ปรับระดับ พับเก็บง่าย chair" />
+      <div class="card-content">
+        <p>เก้าอี้แคมป์ ปรับระดับ พับเก็บง่าย</p>
+        <a class="btn" href="https://s.shopee.co.th/7zzMXBN44g" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'camp-chair')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/7zzMXBN44g')">แชร์</button>
+        </div>
+      </div>
+    </div>
 
-<div class="card" data-id="camp-chair" data-title="เก้าอี้แคมป์ ปรับระดับ พับเก็บง่าย">
-  <img src="camp-chair.JPG" alt="เก้าอี้แคมป์ ปรับระดับ พับเก็บง่าย chair" />
-  <p>เก้าอี้แคมป์ ปรับระดับ พับเก็บง่าย</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'camp-chair')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/7zzMXBN44g" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/7zzMXBN44g')">แชร์</button>
-  </div>
-</div>
+    <div class="card" data-id="cat-home" data-title="Cat Home บ้านแมว ที่ฝนเล็บ">
+      <img src="cat-home.JPG" alt="Cat Home บ้านแมว ที่ฝนเล็บ" />
+      <div class="card-content">
+        <p>Cat Home บ้านแมว ที่ฝนเล็บ 2 IN 1</p>
+        <a class="btn" href="https://s.shopee.co.th/9f7aOBpEHR" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'cat-home')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/9f7aOBpEHR')">แชร์</button>
+        </div>
+      </div>
+    </div>
 
-
-<div class="card" data-id="cat-home" data-title="Cat Home บ้านแมว ที่ฝนเล็บ">
-  <img src="cat-home.JPG" alt="Cat Home บ้านแมว ที่ฝนเล็บ" />
-  <p>Cat Home บ้านแมว ที่ฝนเล็บ 2 IN 1</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'cat-home')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/9f7aOBpEHR" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/9f7aOBpEHR')">แชร์</button>
-  </div>
-</div>
-
-<div class="card" data-id="hello-polo-shoes" data-title="Hello Polo รองเท้าแตะยางนิ่ม">
-  <img src="hello-polo-shoes.JPG" alt="Hello Polo รองเท้าแตะยางนิ่ม" />
-  <p>Hello Polo รองเท้าแตะยางนิ่ม</p>
-  <div class="action-buttons">
-    <button class="favorite-btn" onclick="toggleFavorite(this, 'hello-polo-shoes')">
-      <i class="material-icons">favorite</i>
-    </button>
-    <a class="btn" href="https://s.shopee.co.th/2VePsm3LgY" target="_blank">
-      <i class="material-icons">shopping_cart</i> ช้อปเลย
-    </a>
-    <button class="share-btn" onclick="share('https://s.shopee.co.th/2VePsm3LgY')">แชร์</button>
-  </div>
-</div>
-
+    <div class="card" data-id="hello-polo-shoes" data-title="Hello Polo รองเท้าแตะยางนิ่ม">
+      <img src="hello-polo-shoes.JPG" alt="Hello Polo รองเท้าแตะยางนิ่ม" />
+      <div class="card-content">
+        <p>Hello Polo รองเท้าแตะยางนิ่ม</p>
+        <a class="btn" href="https://s.shopee.co.th/2VePsm3LgY" target="_blank">
+          <i class="material-icons">shopping_cart</i> ช้อปเลย
+        </a>
+        <div class="bottom-row">
+          <button class="favorite-btn" onclick="toggleFavorite(this, 'hello-polo-shoes')">
+            <i class="material-icons">favorite</i>
+          </button>
+          <button class="share-btn" onclick="share('https://s.shopee.co.th/2VePsm3LgY')">แชร์</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -278,14 +295,6 @@
       });
     }
 
-    function toggleFavorites() {
-      const favorites = getFavorites();
-      document.querySelectorAll('.card').forEach(card => {
-        const id = card.dataset.id;
-        card.style.display = favorites.includes(id) ? '' : 'none';
-      });
-    }
-
     document.getElementById('searchInput').addEventListener('input', function () {
       const filter = this.value.toLowerCase();
       document.querySelectorAll('.card').forEach(card => {
@@ -302,7 +311,6 @@
       }
     }
 
-    // init
     window.onload = markFavorites;
   </script>
 </body>
